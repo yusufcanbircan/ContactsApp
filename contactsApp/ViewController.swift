@@ -6,15 +6,44 @@
 //
 
 import UIKit
+import CoreData
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 class ViewController: UIViewController {
-
+    
+    let context = appDelegate.persistentContainer.viewContext
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var contactsTableView: UITableView!
+    
+    var contacts:[Contact] = [Contact]()
+    
+    var isSearching:Bool?
+    var searchingText:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // for large title
         title()
+        
+        // tableView delegate and datasource
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        
+        // search bar delegate
+        searchBar.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchContacts()
+    }
+
+    @IBAction func addButtonTapped(_ sender: Any) {
+    }
+    
+    // MARK: functions
     
     func title() {
         
@@ -22,7 +51,71 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
     }
+    
+    func fetchContacts() {
+        let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
+        
+        let sort = NSSortDescriptor(key: #keyPath(Contact.person_name), ascending: true)
+        
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            contacts = try context.fetch(fetchRequest)
+        } catch {
+            print("Error while fetching contacts")
+        }
+    }
+    
+    func fetchFilteredData(searchText: String) {
+        let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
+        
+        fetchRequest.predicate = NSPredicate(format: "person_name CONTAINS %@", searchText)
+        
+        do {
+            contacts = try context.fetch(fetchRequest)
+        } catch {
+            print("Fetching Error!")
+        }
+    }
+}
 
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contacts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = contactsTableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
+        
+        cell.nameLabel.text = "\(contacts[indexPath.row].person_name!) \(contacts[indexPath.row].person_surname!)"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetails", sender: contacts[indexPath.row])
+    }
+    
+}
 
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchingText = searchText
+        
+        if searchText == "" {
+            isSearching = false
+            fetchContacts()
+        } else {
+            isSearching = true
+            fetchFilteredData(searchText: searchingText!)
+        }
+        
+        contactsTableView.reloadData()
+    }
 }
 
