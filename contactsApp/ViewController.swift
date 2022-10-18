@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     var contacts:[Contact] = [Contact]()
     
-    var isSearching:Bool?
+    var isSearching:Bool = false
     var searchingText:String?
     
     override func viewDidLoad() {
@@ -37,7 +37,13 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchContacts()
+        if isSearching {
+            fetchFilteredData(searchText: searchingText!)
+        } else {
+            fetchContacts()
+        }
+        
+        contactsTableView.reloadData()
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -49,7 +55,15 @@ class ViewController: UIViewController {
         
         self.navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let person = sender as? Contact
         
+        if segue.identifier == "toDetails" {
+            let destinationVC = segue.destination as! DetailsViewController
+            destinationVC.person = person
+        }
     }
     
     func fetchContacts() {
@@ -99,6 +113,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toDetails", sender: contacts[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "delete", handler: {(contextualAction, view, boolValue) in
+            let person = self.contacts[indexPath.row]
+            
+            self.context.delete(person)
+            appDelegate.saveContext()
+            
+            if self.isSearching {
+                self.fetchFilteredData(searchText: self.searchingText!)
+            } else {
+                self.fetchContacts()
+            }
+            
+            self.contactsTableView.reloadData()
+        })
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
 }

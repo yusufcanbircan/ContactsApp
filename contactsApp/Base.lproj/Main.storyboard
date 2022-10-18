@@ -38,14 +38,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" id="5xs-SP-7OK" customClass="ContactTableViewCell" customModule="contactsApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="430" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="430" height="44.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5xs-SP-7OK" id="FWt-Th-DhP">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="44.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sL-XN-3qI">
-                                                    <rect key="frame" x="27" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="27" y="11.000000000000002" width="42" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -97,7 +97,7 @@
         <!--New Contact-->
         <scene sceneID="Fvt-l8-6aw">
             <objects>
-                <viewController id="D65-aw-ql7" customClass="NewContactViewController" customModule="contactsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D65-aw-ql7" customClass="NewViewController" customModule="contactsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jHE-n1-Uzt">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,16 +166,16 @@
                     <navigationItem key="navigationItem" title="New Contact" id="n3G-hC-jww">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="dvJ-Vj-8Ld">
                             <connections>
-                                <action selector="saveButtonTapped:" destination="D65-aw-ql7" id="fRr-yo-87n"/>
+                                <action selector="saveButtonTapped:" destination="D65-aw-ql7" id="h3f-Zr-dY9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addCompanyTextField" destination="vUt-Ck-vyF" id="3Ad-eK-luF"/>
-                        <outlet property="addEmailTextField" destination="6vo-4k-Tw6" id="Jli-1x-5vU"/>
-                        <outlet property="addNameTextLabel" destination="wN1-dj-2Jf" id="Hqw-ov-8BH"/>
-                        <outlet property="addNumberTextField" destination="uvg-CP-K3W" id="WfZ-O1-Oxn"/>
-                        <outlet property="addSurnameTextLabel" destination="oSJ-78-0HG" id="XvJ-r7-Rjj"/>
+                        <outlet property="companyTextField" destination="vUt-Ck-vyF" id="0Tw-HE-Y4v"/>
+                        <outlet property="emailTextField" destination="6vo-4k-Tw6" id="leg-6d-1vL"/>
+                        <outlet property="nameTextField" destination="wN1-dj-2Jf" id="HWX-8E-oS9"/>
+                        <outlet property="numberTextField" destination="uvg-CP-K3W" id="hAn-jC-5qm"/>
+                        <outlet property="surnameTextField" destination="oSJ-78-0HG" id="Wy4-1l-YgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIY-i6-pV2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -313,7 +313,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="uYz-6Z-EbX">
                             <connections>
                                 <action selector="editButtonTapped:" destination="dvB-Lc-MPj" id="Ryc-zb-swt"/>
-                                <segue destination="HKy-Fh-AR2" kind="show" id="sP5-8X-NXB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -322,6 +321,7 @@
                         <outlet property="detailsEmailLabel" destination="8zf-MO-e1O" id="n0q-YO-d0x"/>
                         <outlet property="detailsNameLabel" destination="1yG-pa-qq1" id="UCv-TN-d9K"/>
                         <outlet property="detailsPhoneLabel" destination="k85-mG-jK6" id="XLN-Zf-E7k"/>
+                        <segue destination="HKy-Fh-AR2" kind="show" identifier="toEdit" id="VO3-FO-BbB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMK-S0-qQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

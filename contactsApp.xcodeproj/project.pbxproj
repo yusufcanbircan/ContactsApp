@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB8A703628FD79F5004C7F2B /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A703528FD79F5004C7F2B /* NewContactViewController.swift */; };
 		BB8A703828FD7A0A004C7F2B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A703728FD7A0A004C7F2B /* DetailsViewController.swift */; };
 		BB8A703A28FD7A19004C7F2B /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A703928FD7A19004C7F2B /* EditContactViewController.swift */; };
 		BB8A703C28FD7A7E004C7F2B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8A703B28FD7A7E004C7F2B /* ContactTableViewCell.swift */; };
+		BBC4F01D28FD8A420090A3FB /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F01C28FD8A420090A3FB /* NewViewController.swift */; };
 		BBFA517B28FADB9C003A861A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA517A28FADB9C003A861A /* AppDelegate.swift */; };
 		BBFA517D28FADB9C003A861A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA517C28FADB9C003A861A /* SceneDelegate.swift */; };
 		BBFA517F28FADB9C003A861A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA517E28FADB9C003A861A /* ViewController.swift */; };
@@ -21,10 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BB8A703528FD79F5004C7F2B /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		BB8A703728FD7A0A004C7F2B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		BB8A703928FD7A19004C7F2B /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 		BB8A703B28FD7A7E004C7F2B /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		BBC4F01C28FD8A420090A3FB /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		BBFA517728FADB9C003A861A /* contactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBFA517A28FADB9C003A861A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBFA517C28FADB9C003A861A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,10 +74,10 @@
 				BBFA518828FADB9E003A861A /* LaunchScreen.storyboard */,
 				BBFA518B28FADB9E003A861A /* Info.plist */,
 				BBFA518328FADB9C003A861A /* contactsApp.xcdatamodeld */,
-				BB8A703528FD79F5004C7F2B /* NewContactViewController.swift */,
 				BB8A703728FD7A0A004C7F2B /* DetailsViewController.swift */,
 				BB8A703928FD7A19004C7F2B /* EditContactViewController.swift */,
 				BB8A703B28FD7A7E004C7F2B /* ContactTableViewCell.swift */,
+				BBC4F01C28FD8A420090A3FB /* NewViewController.swift */,
 			);
 			path = contactsApp;
 			sourceTree = "<group>";
@@ -154,9 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBFA518528FADB9C003A861A /* contactsApp.xcdatamodeld in Sources */,
-				BB8A703628FD79F5004C7F2B /* NewContactViewController.swift in Sources */,
 				BB8A703A28FD7A19004C7F2B /* EditContactViewController.swift in Sources */,
 				BBFA517F28FADB9C003A861A /* ViewController.swift in Sources */,
+				BBC4F01D28FD8A420090A3FB /* NewViewController.swift in Sources */,
 				BB8A703C28FD7A7E004C7F2B /* ContactTableViewCell.swift in Sources */,
 				BBFA517B28FADB9C003A861A /* AppDelegate.swift in Sources */,
 				BBFA517D28FADB9C003A861A /* SceneDelegate.swift in Sources */,
