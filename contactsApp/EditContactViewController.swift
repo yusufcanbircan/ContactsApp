@@ -21,8 +21,6 @@ class EditContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("\(person?.person_name)")
 
         if let person {
             editNameTextField.text = person.person_name
@@ -66,6 +64,4 @@ class EditContactViewController: UIViewController {
         self.present(alertController, animated: false)
         
     }
-    
-
 }
